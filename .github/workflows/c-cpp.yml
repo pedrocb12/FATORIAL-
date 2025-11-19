@@ -1,0 +1,21 @@
+name: C/C++ CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Instalar GCC
+      run: sudo apt-get install build-essential
+
+    - name: Compilar teste
+      run: gcc fatorial.c fatorial_test.c -o teste
+
+    - name: Executar teste
+      run: ./teste
